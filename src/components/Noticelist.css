@@ -1,0 +1,13 @@
+.notice-list {
+    padding-top: 3.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 12.5rem;
+}
+
+.notice-list h2 {
+    font-size: 3rem;
+}

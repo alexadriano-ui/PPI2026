@@ -1,0 +1,47 @@
+import { useState } from "react";
+import "./Noticecard.css";
+
+function NoticeCard({ notice, onToggleFeatured, onDeleteNotice }) {
+  const [showDetails, setShowDetails] = useState(false);
+
+  return (
+    <article className={`notice-card ${notice.featured ? "featured" : ""}`}>
+      <p>{notice.category}</p>
+      <h3>{notice.title}</h3>
+      <p>{notice.description}</p>
+
+      <div className="notice-meta">
+        <span>Por: {notice.author}</span>
+        {" - "}
+        <span>Data: {notice.date}</span>
+      </div>
+
+      {showDetails && (
+        <p>
+          {notice.id === 1
+            ? "Venha participar da Secitex (Semana de Tecnologia e Extensão) 2026 no Campus Macau do IFRN. O evento reune estudantes, pesquisadores e profissionais da área de tecnologia para compartilhar seus conhecimentos e experiências. Inscreva-se agora!"
+            : "O laboratório de informática se encontra temporariamente fechado. Porém logo deve voltar a funcionar normalmente."}
+        </p>
+      )}
+
+      <div className="notice-actions">
+        <button onClick={() => onToggleFeatured(notice.id)}>
+          {notice.featured ? "Remover destaque" : "Destacar"}
+        </button>
+
+        <button
+          className="details"
+          onClick={() => setShowDetails(!showDetails)}
+        >
+          {showDetails ? "Fechar detalhes" : "Exibir detalhes"}
+        </button>
+
+        <button onClick={() => onDeleteNotice(notice.id)}>
+          Excluir
+        </button>
+      </div>
+    </article>
+  );
+}
+
+export default NoticeCard;
